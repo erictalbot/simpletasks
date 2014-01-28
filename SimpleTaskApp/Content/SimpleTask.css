@@ -1,0 +1,191 @@
+﻿
+body
+{
+    font-family: Verdana;
+}
+
+#content
+{
+    width: 100px;
+    margin: auto;
+}
+
+a.ItemEdit
+{
+    font-size: 12px;
+    text-decoration: none;
+    padding: 0 0 0 14px; 
+    background-repeat: no-repeat;
+    background-image: url(../images/edit.gif);
+    margin-left: 1em;
+}
+
+a.ItemDelete
+{
+    font-size: 12px;
+    text-decoration: none;
+    padding: 0 0 0 14px; 
+    background-repeat: no-repeat;
+    background-image: url(../images/del.gif);
+    margin-left: 1em;
+}
+
+ul
+{
+    padding-left: 1px;
+}
+
+li
+{
+    list-style-type: none;
+    font-size: 12px;
+    height: 2em;
+    margin-right: 10em;
+}
+
+li:hover
+{
+    background-color:lightblue;
+}
+
+.simpleTaskList
+{
+    width : 55em;
+}
+
+.divDescription
+{
+    width: 35em;
+    margin-right: 2em;
+    float: left;
+    font-size: 12px;
+}
+
+.divTaskList
+{
+    width: 10em;
+    margin-right: 2em;
+    float: left;
+    font-size: 12px;
+}
+
+.button
+{
+    background-color: lightblue;
+    color: black;
+    font-family: Verdana;
+    font-size: 12px;
+    border: 1px solid #1A356E;
+    text-decoration: none;
+}
+
+.button:hover
+{
+    background-color: ButtonHighlight;
+}
+
+.sortButton
+{
+    background-color: white;
+    color: black;
+    font-family: Verdana;
+    font-size: 12px;
+    background-image: url(../images/sort.png);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    border : none;
+     width: 10em;
+}
+
+.sortButton:hover
+{
+    background-color:lightgray;
+}
+
+/* Tablet size screen */
+@media screen and (max-width: 768px)
+{
+    /* only insert selectors and properties that should change. */
+    li
+    {
+        font-size: 10px;
+        margin-right: 5em;
+    }
+
+    a.ItemEdit
+    {
+        font-size: 10px;
+    }
+
+    a.ItemDelete
+    {
+        font-size: 10px;
+    }
+
+    .simpleTaskList
+    {
+        width: 45em;
+    }
+
+    .divDescription
+    {
+        width: 25em;
+        font-size: 10px;
+    }
+
+    .divTaskList
+    {
+       font-size: 10px;
+    }
+
+    .button
+    {
+        font-size : 10px;
+    }
+
+    .sortButton
+    {
+        font-size : 10px;
+    }
+}
+
+/* Phone size screen */
+@media screen and (max-width: 480px)
+{
+    /* only insert selectors and properties that should change. */
+    li
+    {
+        font-size: 8px;
+        margin-right: 1em;
+    }
+    a.ItemEdit
+    {
+        font-size: 8px;
+    }
+    a.ItemDelete
+    {
+        font-size: 8px;
+    }
+     .simpleTaskList
+    {
+        width: 30em;
+    }
+
+    .divDescription
+    {
+        width: 15em;
+        font-size: 8px;
+    }
+    .divTaskList
+    {
+       font-size: 8px;
+    }
+    .button
+    {
+        font-size : 8px;
+    }
+    .sortButton
+    {
+        font-size : 8px;
+    }
+}

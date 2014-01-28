@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="SimpleTaskAzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
+  <Role name="SimpleTaskApp">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="erictalb" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEHngbHl/Ht+gTkV8g2bSKuAwDQYJKoZIhvcNAQEBBQAEggEAt91/9wIXEmB3R+8xxuuKpt+3PbYh2KmNWkeTyLUAw75qS34pj0jit0EJdLxVMwU0J6TQkgvS0rj8ne29Jb4toXxmhNLRErlU2bYIMXKoo09SJHz4G+cdCcVpivL3SC2TL3ELo+GbKFSPBrDc9uk139rwEtSTN+qirHezGQCfe+bI8vVAZ5aHrRkpg4/yxwmS97o2hV3fODEYpQwOoUqID40CqzEHP0ptR1BMA6DrlQTBPJSE1JsDI9Xp2v+jUi2UmvuL94E74bIj6uxvoIdl304b5Wtsf3FPx+/2W68wHdpbQXrA3zrZ4oqsxaTJAH/KEURGnqMwh12PYuz5ft9kpTAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECHpbWcRl1NbfgBDdiG/WjFt2VBizHja9TtUG" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-05-23T23:59:59.0000000-04:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="F30C9FF3143D9C722A5A57C477B5A98AE77C28F6" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

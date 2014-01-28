@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTaskData", "SimpleTaskData\SimpleTaskData.csproj", "{A630CE21-80A1-4557-AAEC-1050E69CCD21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitySample", "UnitySample\UnitySample.csproj", "{5295C9F9-D72F-49D5-BA92-876E2F0761FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTaskApp", "SimpleTaskApp\SimpleTaskApp.csproj", "{A277AA05-125E-44D0-8FCC-FFB1A1830A04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NUnit", "NUnit", "{EFFC6B84-A9D7-4258-AB5F-BDBA73A7A918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTaskApp.NUnit", "SimpleTaskApp.NUnit\SimpleTaskApp.NUnit.csproj", "{CBDBA308-96FF-4033-B9AE-B9D3DD8FAE15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTaskData.NUnit", "SimpleTaskData.NUnit\SimpleTaskData.NUnit.csproj", "{4BF1E266-23B8-469C-A6C1-55FA634A3392}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SimpleTaskAzureService", "SimpleTaskAzureService\SimpleTaskAzureService.ccproj", "{B6E1C9D2-A555-48BB-A348-0218A0AF2081}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A630CE21-80A1-4557-AAEC-1050E69CCD21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A630CE21-80A1-4557-AAEC-1050E69CCD21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A630CE21-80A1-4557-AAEC-1050E69CCD21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A630CE21-80A1-4557-AAEC-1050E69CCD21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5295C9F9-D72F-49D5-BA92-876E2F0761FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5295C9F9-D72F-49D5-BA92-876E2F0761FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5295C9F9-D72F-49D5-BA92-876E2F0761FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5295C9F9-D72F-49D5-BA92-876E2F0761FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A277AA05-125E-44D0-8FCC-FFB1A1830A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A277AA05-125E-44D0-8FCC-FFB1A1830A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A277AA05-125E-44D0-8FCC-FFB1A1830A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A277AA05-125E-44D0-8FCC-FFB1A1830A04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDBA308-96FF-4033-B9AE-B9D3DD8FAE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDBA308-96FF-4033-B9AE-B9D3DD8FAE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDBA308-96FF-4033-B9AE-B9D3DD8FAE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDBA308-96FF-4033-B9AE-B9D3DD8FAE15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BF1E266-23B8-469C-A6C1-55FA634A3392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BF1E266-23B8-469C-A6C1-55FA634A3392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BF1E266-23B8-469C-A6C1-55FA634A3392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BF1E266-23B8-469C-A6C1-55FA634A3392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6E1C9D2-A555-48BB-A348-0218A0AF2081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E1C9D2-A555-48BB-A348-0218A0AF2081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E1C9D2-A555-48BB-A348-0218A0AF2081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E1C9D2-A555-48BB-A348-0218A0AF2081}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CBDBA308-96FF-4033-B9AE-B9D3DD8FAE15} = {EFFC6B84-A9D7-4258-AB5F-BDBA73A7A918}
+		{4BF1E266-23B8-469C-A6C1-55FA634A3392} = {EFFC6B84-A9D7-4258-AB5F-BDBA73A7A918}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

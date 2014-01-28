@@ -1,0 +1,21 @@
+﻿@{@model SimpleTaskApp.Models.Views.TaskFormViewModel
+    using (Html.BeginForm(Model.VerbName, Model.ControllerName, FormMethod.Post, new { name = "editTask", id = "editTask" }))
+    {
+    <script>
+        $(function () {
+            $("#DueDate").datepicker({ dateFormat: "dd-mm-yy" });
+        });
+    </script>
+    <p class="validateTips">
+        All form fields are required.</p>
+    <fieldset>
+        @Html.LabelFor(m => m.Description)
+        @Html.EditorFor(m => m.Description)
+        @Html.LabelFor(m => m.DueDate)
+        @Html.EditorFor(m => m.DueDate)
+        @Html.LabelFor(m => m.Completion)
+        @Html.EditorFor(m => m.Completion)
+        @Html.HiddenFor(m=>m.SimpleTaskId)
+    </fieldset>
+    }
+}

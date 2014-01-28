@@ -1,0 +1,228 @@
+﻿@section HeadScripts {
+    <script>
+
+        var viewModel;
+  
+        // Return a JSON string from a WEB form
+        // I tried to use the following code to create a Date object but does not work
+        // That is why the dueDate date object is removed from the json string returned.
+        // var ty = $('#createNewTask-form :input[name="DueDate"]');
+        // var tt = new Date(ty[0].value);
+        function buildJson(formName) {
+            
+            var frm = document.getElementById(formName);
+       
+            var jsonObject = {}
+            for (i=0; i< frm.elements.length; i++) {
+                jsonObject[frm.elements[i].name] = frm.elements[i].value;
+            }
+
+            // Yet another method to get form's field.
+            //var formData = $(":input").serializeArray();
+            //var jsonObject = {};
+            //for (i in formData) {
+            //        jsonObject[formData[i].name] = formData[i].value 
+            //}
+
+            return JSON.stringify(jsonObject);
+        }
+
+         //Return a TaskItem that we'll later add to the viewmodel
+        function taskItem(description, dueDateMilliSeconds, simpleTaskId) {
+            return {
+                Description: ko.observable(description),
+                DueDate: ko.observable(new Date(dueDateMilliSeconds).toDateString()),
+                DueDateMilliSeconds : dueDateMilliSeconds,
+                SimpleTaskId: ko.observable(simpleTaskId)
+            };
+        }
+
+        $(function () {
+            var dataArray = [];
+            $.getJSON("api/Task/",
+            function (tasks) {
+                for (var i = 0; i < tasks.length; i++) {
+                    dataArray.push(new taskItem(tasks[i].description, tasks[i].dueDateMilliSeconds, tasks[i].simpleTaskId));
+                }
+                viewModel = {
+                    tasks: ko.observableArray(dataArray),
+                    selectedTask: null,
+                    index : 0, 
+                    descriptionSorted: Boolean(1),   // true ascending, false descending
+                    dueDateSorted: Boolean(1),
+                    sortColumnIndex: 1,             // FirstColumn is sorted by default. 
+
+                    selectTask: function () {
+                        viewModel.selectedTask = this;
+                        index = viewModel.tasks.indexOf(viewModel.selectedTask);
+                    },
+
+                    setValue: function (description, dueDateMilliSeconds, simpleTaskId) {
+                        viewModel.tasks()[index].Description(description);
+                        viewModel.tasks()[index].DueDate(new Date(dueDateMilliSeconds).toDateString());
+                        viewModel.tasks()[index].SimpleTaskId(simpleTaskId);
+                    },
+
+                    sort: function() {
+                        if (viewModel.sortColumnIndex == 1)  { // This must act on the first column
+                            if (viewModel.descriptionSorted) {
+                                viewModel.descriptionSorted = Boolean(0);
+                                viewModel.tasks.sort(function (left, right) {
+                                    return left.Description() == right.Description() ? 0 : (left.Description() < right.Description() ? 1 : -1)
+                                });
+                            }
+                            else {
+                                viewModel.descriptionSorted = Boolean(1);
+                                viewModel.tasks.sort(function (left, right) {
+                                    return left.Description() == right.Description() ? 0 : (left.Description() < right.Description() ? -1 : 1)
+                                });
+                            }
+                        }
+                        else if (viewModel.sortColumnIndex == 2) {
+                            if (viewModel.dueDateSorted) {
+                                viewModel.dueDateSorted = Boolean(0);
+                                viewModel.tasks.sort(function (left, right) {
+                                    return left.DueDateMilliSeconds == right.DueDateMilliSeconds ? 0 : (left.DueDateMilliSeconds < right.DueDateMilliSeconds ? 1 : -1)
+                                });
+                            }
+                            else {
+                                viewModel.dueDateSorted = Boolean(1);
+                                viewModel.tasks.sort(function (left, right) {
+                                    return left.DueDateMilliSeconds == right.DueDateMilliSeconds ? 0 : (left.DueDateMilliSeconds < right.DueDateMilliSeconds ? -1 : 1)
+                                });
+                            }
+                        }
+                    },
+                };
+                ko.applyBindings(viewModel);
+            });
+        });
+
+        $(function () {
+            $('#createNewTask').click(function () {
+                $.get('/Home/CreateTask', function (data) {
+                    $("#createNewTask-form").dialog({
+                        autoOpen: false,
+                        modal: true,
+                        buttons: {
+                            "Create task": function () {
+                                $.ajax({
+                                    url: "/api/task",             
+                                    type: "post",                 
+                                    contentType: "application/json; charset=utf-8",
+                                    data: buildJson("newTask"),
+                                    dataType: "json",
+                                    success: function (res) {
+                                        // example on how to get a specific field into a var
+                                        // var descriptionValue = $('#createNewTask-form :input[name="Description"]');
+                                        //viewModel.tasks.push(new taskItem(descriptionValue[0].value, viewModel.tasks.length + 1));
+                                        viewModel.tasks.push(new taskItem(res.description, res.dueDateMilliSeconds, res.simpleTaskId));
+                                        viewModel.tasks.sort(function (left, right) {
+                                            return left.Description() == right.Description() ? 0 : (left.Description() < right.Description() ? -1 : 1)
+                                        });
+                                    }
+                                });
+                                $(this).dialog("close");
+                            },
+                            "Cancel": function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                    $("#createNewTask-form").html(data);
+                    $("#createNewTask-form").dialog("open");
+                });
+            });
+        });
+
+        $(document).on("click", ".ItemDelete", function () {
+            var itemToRemove = ko.dataFor(this);
+            // First call the web api to delete this record and then if successfull, update the view.
+            $.ajax({
+                url: "/api/task?id=" + itemToRemove.SimpleTaskId(),
+                type: "DELETE",
+                success: function () {
+                    viewModel.tasks.remove(itemToRemove);
+                }
+            });
+        });
+
+        $(document).on("click", ".ItemEdit", function () {
+            var selectedItem = ko.dataFor(this);
+            // First call the web api to delete this record and then if successfull, update the view.
+            $.get('/Home/EditTask/' + selectedItem.SimpleTaskId(), function (data) {
+                $("#editTask-form").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    buttons: {
+                        "Save": function () {
+                            $.ajax({
+                                url: "/api/task",              
+                                type: "post",                   
+                                contentType: "application/json; charset=utf-8",
+                                data: buildJson("editTask"),
+                                dataType: "json",
+                                success: function (res) {
+                                    viewModel.setValue(res.description, res.dueDateMilliSeconds, res.simpleTaskId);
+                                }
+                            });
+                            $(this).dialog("close");
+                        },
+                        "Cancel": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+                $("#editTask-form").html(data);
+                $("#editTask-form").dialog("open");
+            });
+        });
+
+        $(function () {
+            $('#sortDescription').click(function () {
+                viewModel.sortColumnIndex = 1; // Sorted on the first column
+                viewModel.sort();
+            });
+        });
+
+        $(function () {
+            $('#sortDueDate').click(function () {
+                viewModel.sortColumnIndex = 2; // Sorted on the second column
+                viewModel.sort();
+            });
+        });
+
+    </script>
+}
+
+<button id="createNewTask" class="button" >Create new task</button><br />
+<br />
+
+<div class="divDescription">
+    <button id="sortDescription" class="sortButton" >Description</button>
+</div>
+<div class="divTaskList">
+    <button id="sortDueDate" class="sortButton" >Due date</button>
+</div>
+
+
+<div class="simpleTaskList">
+    <ul data-bind="foreach: tasks">
+        <li class="taskItem" data-bind="click: $parent.selectTask">
+            <div class="divDescription">
+                <span data-bind="text: Description"></span>
+            </div>
+            <div class="divTaskList">
+                <span data-bind="text: DueDate"></span>
+            </div>
+            <div>
+                <a href="#" class="ItemDelete">delete</a>
+                <a href="#" class="ItemEdit">edit</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div id="createNewTask-form" title="Create new task"></div>
+<div id="editTask-form" title="Edit task"></div>
+

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Integration tests for the Task controller</title>
+     <script type="text/javascript" src="../../Scripts/jquery-1.7.1.js"></script>
+     <link rel="stylesheet" type="text/css" href="../qunit/qunit.css" />
+     <script type="text/javascript" src="../qunit/qunit.js"></script> 
+    <script type="text/javascript" src="../qunit/utils.js"></script> 
+</head>
+<body>
+    Integration test are meant to test the controllers with their underlying database. <br />
+    In our case however they use our TaskManager objects. Wich makes them almost like acceptance tests. <br />
+    <img src="../../Images/Documentation/test-pyramid.png" />
+    <img src="../../Images/Documentation/TestIntegration.PNG" />
+    <h1 id="qunit-header">Task controller CUD tests</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture"></div>
+</body>
+    <script src="TaskController_tests_integration.js"></script>
+ 
+</html>
