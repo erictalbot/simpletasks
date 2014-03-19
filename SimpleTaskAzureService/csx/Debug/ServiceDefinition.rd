@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SimpleTaskAzureService" generation="1" functional="0" release="0" Id="b1c90605-569a-4fca-aebf-31de0b6a90aa" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SimpleTaskAzureService" generation="1" functional="0" release="0" Id="0f060e95-e687-4fe9-8de3-f51355411ab5" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="SimpleTaskAzureServiceGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -167,14 +167,14 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="6d696adb-2df0-4f09-961d-55ceccc3ebf4" ref="Microsoft.RedDog.Contract\ServiceContract\SimpleTaskAzureServiceContract@ServiceDefinition">
+    <implementation Id="fa575826-f009-4f45-88f3-a855ac6e3e31" ref="Microsoft.RedDog.Contract\ServiceContract\SimpleTaskAzureServiceContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="99f34e90-ea06-478f-b963-59d745c7a7e1" ref="Microsoft.RedDog.Contract\Interface\SimpleTaskApp:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="d618dfce-ae90-4554-a224-be34baec59b5" ref="Microsoft.RedDog.Contract\Interface\SimpleTaskApp:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/SimpleTaskAzureService/SimpleTaskAzureServiceGroup/SimpleTaskApp:Endpoint1" />
           </inPort>
         </interfaceReference>
-        <interfaceReference Id="9b2782b4-3593-4464-a5f9-f240bd60fa89" ref="Microsoft.RedDog.Contract\Interface\SimpleTaskApp:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput@ServiceDefinition">
+        <interfaceReference Id="7adbcac3-4a6c-4dd7-a0fb-324b5da94a9c" ref="Microsoft.RedDog.Contract\Interface\SimpleTaskApp:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/SimpleTaskAzureService/SimpleTaskAzureServiceGroup/SimpleTaskApp:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput" />
           </inPort>
